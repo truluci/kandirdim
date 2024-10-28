@@ -1,0 +1,23 @@
+doctype html
+html(lang='en')
+  head
+    meta(name='viewport' content='width=device-width, initial-scale=1.0, shrink-to-fit=no, maximum-scale=1.0, user-scalable=0')
+    meta(charset='UTF-8')
+    title= title
+    if includes
+      if includes.css
+        each file_name in includes.css
+          if file_name == 'page'
+            link(rel='stylesheet' href=`/css/${page}.css`)
+          else
+            link(rel='stylesheet' href=`/css/general/${file_name}.css`)
+      if includes.js
+        each file_name in includes.js
+          if file_name == 'page'
+            script(type='module' src=`/js/${page}.js`)
+          else if file_name == 'socket.io'
+            script(type='module' src=`/socket.io/socket.io.js`)
+          else
+            script(type='module' src=`/js/functions/${file_name}.js`)
+  body
+    block content
