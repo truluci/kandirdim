@@ -1,0 +1,34 @@
+:root {
+  --navbar-text-color: #fff;
+  --navbar-padding: 1.5rem;
+  --navbar-link-spacing: 3rem;
+  --navbar-buttons-border-radius: 30px;
+}
+
+body {
+  margin: 0;
+  background-color: #243642;
+  font-family: "Pixelify Sans", sans-serif;
+}
+  
+.navbar {
+  width: 80vw;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: var(--navbar-padding);
+  margin: 0 auto;
+}
+  
+.navbar a {
+  color: var(--navbar-text-color);
+  margin-left: var(--navbar-link-spacing);
+  border-radius: var(--navbar-buttons-border-radius);
+  padding: 0.7rem 1.5rem;
+  background-color: #387478;
+  text-decoration: none;
+}
+
+.navbar a:hover {
+  opacity: 0.5;
+}

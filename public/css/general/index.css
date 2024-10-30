@@ -1,0 +1,43 @@
+:root {
+  --body-wrapper-width: 80vw;
+  --body-wrapper-height: 80vh;
+  --body-wrapper-bg-color: #387478;
+  --button-bg-color: #629584;
+  --button-text-color: #fff;
+  --text-color: #fff;
+}
+
+.body-wrapper {
+  margin: 0 auto;
+  width: var(--body-wrapper-width);
+  height: var(--body-wrapper-height);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: var(--body-wrapper-bg-color);
+  border-radius: 30px;
+}
+
+.body-wrapper-content-btn {
+  font-family: "Pixelify Sans", sans-serif;
+  background-color: var(--button-bg-color);
+  color: var(--button-text-color);
+  padding: 0.7rem 1.5rem;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 2.2rem;
+  text-align: center;
+}
+
+.body-wrapper-content-btn:hover {
+  opacity: 0.8;
+}
+
+.body-wrapper-content-text {
+  color: var(--text-color);
+  margin-top: 1rem;
+  font-size: 2rem;
+}
