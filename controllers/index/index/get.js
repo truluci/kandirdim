@@ -5,7 +5,7 @@ export default (_req, res) => {
     title: 'Hello, World!',
     includes: {
       js: ['socket.io', 'page'],
-      css: []
+      css: ['header', 'index']
     }
   });
 };

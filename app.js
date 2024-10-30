@@ -6,7 +6,7 @@ import indexRouter from './routers/index.js';
 const PORT = process.env.PORT || 8000;
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/kandirdim';
 
-await mongoose.connect(MONGODB_URI);
+//await mongoose.connect(MONGODB_URI);
 
 const app = express();
 
