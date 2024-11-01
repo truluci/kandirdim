@@ -1,10 +1,12 @@
 extends ../partials/head.pug
 
 block content
-  li.navbar 
-    a(href='/howto') How to?
-    a(href="/about") About
-    a(href="/contact") Contact
+  div.header-wrapper
+    a.header-wrapper-home(href="/") Home
+    li.navbar 
+      a(href='/howto') How to?
+      a(href="/about") About
+      a(href="/contact") Contact
   
   block main
   include ../partials/footer.pug
