@@ -1,5 +1,6 @@
 :root {
   --navbar-text-color: #fff;
+  --navbar-button-color: #387478;
   --navbar-padding: 1.5rem;
   --navbar-link-spacing: 3rem;
   --navbar-buttons-border-radius: 30px;
@@ -11,13 +12,30 @@ body {
   font-family: "Pixelify Sans", sans-serif;
 }
   
-.navbar {
+.header-wrapper {
   width: 80vw;
   display: flex;
-  justify-content: flex-end;
   align-items: center;
   padding: var(--navbar-padding);
   margin: 0 auto;
+}
+
+.header-wrapper-home {
+  color: var(--navbar-text-color);
+  border-radius: var(--navbar-buttons-border-radius);
+  padding: 0.7rem 1.5rem;
+  background-color: var(--navbar-button-color);
+  text-decoration: none;
+}
+
+.header-wrapper-home:hover {
+  opacity: 0.5;
+}
+
+.navbar {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
 }
   
 .navbar a {
@@ -25,7 +43,7 @@ body {
   margin-left: var(--navbar-link-spacing);
   border-radius: var(--navbar-buttons-border-radius);
   padding: 0.7rem 1.5rem;
-  background-color: #387478;
+  background-color: var(--navbar-button-color);
   text-decoration: none;
 }
 

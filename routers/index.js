@@ -1,16 +1,11 @@
 import { Router } from "express";
 import indexGetController from "../controllers/index/index/get.js";
+import aboutGetController from "../controllers/index/about/get.js";
 
 const router = Router();
 
 router.get('/', indexGetController);
 
-router.get('/about', (req, res) => {
-    res.send('About page');
-});
-
-router.get('/contact', (req, res) => {
-    res.send('Contact page');
-});
+router.get('/about', aboutGetController);
 
 export default router;

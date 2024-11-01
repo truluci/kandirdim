@@ -1,0 +1,21 @@
+:root {
+    --body-wrapper-width: 80vw;
+    --body-wrapper-height: 80vh;
+    --body-wrapper-bg-color: #387478;
+    --button-bg-color: #629584;
+    --button-text-color: #fff;
+    --text-color: #fff;
+}
+
+.body-wrapper {
+    margin: 0 auto;
+    width: var(--body-wrapper-width);
+    height: var(--body-wrapper-height);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: var(--body-wrapper-bg-color);
+    border-radius: 30px;
+}
