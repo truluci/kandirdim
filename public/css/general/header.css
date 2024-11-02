@@ -16,7 +16,7 @@ body {
   width: 80vw;
   display: flex;
   align-items: center;
-  padding: var(--navbar-padding);
+  padding: var(--navbar-padding) 0;
   margin: 0 auto;
 }
 

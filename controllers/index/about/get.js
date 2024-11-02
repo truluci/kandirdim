@@ -4,7 +4,7 @@ export default (_req, res) => {
     title: 'about',
     includes: {
       js: ['page'],
-      css: ['header', 'about']
+      css: ['header', 'page', 'general']
     }
   });
 };
