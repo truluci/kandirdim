@@ -1,0 +1,32 @@
+:root {
+  --loading-item-width: 16px;
+  --loading-animation-duration: 1.5s;
+}
+
+.loading-wrapper {
+  display: flex;
+  gap: calc(var(--loading-item-width) / 2);
+  width: fit-content;
+  height: fit-content;
+}
+
+.loading-each-item {
+  width: var(--loading-item-width);
+  min-width: var(--loading-item-width);
+  height: var(--loading-item-width);
+  min-height: var(--loading-item-width);
+  background-color: var(--button-text-color);
+  animation: wave var(--loading-animation-duration) infinite alternate ease-in-out;
+}
+
+@keyframes wave {
+  0% {
+    transform: translateY(-25%);
+  }
+  50% {
+    transform: translateY(+25%);
+  }
+  100% {
+    transform: translateY(-25%);
+  }
+}

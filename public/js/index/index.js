@@ -1,112 +1,170 @@
 import '/socket.io/socket.io.js';
+import serverRequest from '../functions/serverRequest.js';
 
 const socket = io();
 
-let ROOM_ID = null;
+socket.room_id = null;
 
-socket.on('match', (room_id) => {
+socket.on('match', room_id => {
   console.log(room_id)
 
-  ROOM_ID = room_id;
+  socket.room_id = room_id;
 
-  socket.emit('message', {
-    room_id: ROOM_ID,
-    message: 'Hello, World!'
-  });
+  renderGameWrapper();
 });
-
-socket.on('message', (message) => {
+socket.on('message', message => {
   console.log(message);
 
-  // setTimeout(() => {
-
-  //   socket.emit('message', {
-  //     room_id: ROOM_ID,
-  //     message: 'Hello, World!'
-  //   });
-  // }, 1000);
+  addChatMessageOpponent(message);
 });
-
 socket.on('time_up', () => {
   console.log('Time is up!');
 
-  ROOM_ID = null;
+  renderDecisionWrapper();
 });
 
-socket.emit('match_request');
+function setTimer() {
+  const timerInterval = setInterval(() => {
+    const timeString = document.querySelector('.body-wrapper-chat-text-input-wrapper-timer').innerText;
 
-function renderGame() {
+    if (timeString === '00:00')
+      return clearInterval(timerInterval);
+
+    const [minutes, seconds] = timeString.split(':').map(Number);
+
+    const totalSeconds = minutes * 60 + seconds - 1;
+
+    const newMinutes = Math.floor(totalSeconds / 60);
+    const newSeconds = totalSeconds % 60;
+
+    const formattedMinutes = String(newMinutes).padStart(2, '0');
+    const formattedSeconds = String(newSeconds).padStart(2, '0');
+
+    document.querySelector('.body-wrapper-chat-text-input-wrapper-timer').innerText = `${formattedMinutes}:${formattedSeconds}`;
+  }, 1000);
+};
+
+function renderWaitingForGame() {
+  const startButton = document.querySelector('.body-wrapper-content-button');
+
+  document.querySelector('.body-wrapper-content-button-text').classList.add('display-none');
+  document.querySelector('.body-wrapper-content-button-loading').classList.remove('display-none');
+
+  startButton.disabled = true;
+
+  socket.emit('match_request');
+};
+function renderGameWrapper() {
   const pregameWrapper = document.querySelector('.pregame-wrapper');
   const gameWrapper = document.querySelector('.game-wrapper');
 
-  if (pregameWrapper && gameWrapper) {
-    gameWrapper.classList.remove('display-none');
-    pregameWrapper.classList.add('display-none');
-  }
+  gameWrapper.classList.remove('display-none');
+  pregameWrapper.classList.add('display-none');
 
-  setTimeout(() => {
-    const decisionWrapper = document.querySelector('.decision-wrapper');
+  setTimer();
+};
+function renderDecisionWrapper() {
+  const decisionWrapper = document.querySelector('.decision-wrapper');
+  const chatInput = document.querySelector('.body-wrapper-chat-text-input-wrapper-input');
 
-    if (decisionWrapper) {
-      decisionWrapper.classList.remove('display-none');
-      gameWrapper.classList.add('display-none'); // blurlayabiliriz
-    }
-  }, 1000); // 1 second delay
-}
+  decisionWrapper.classList.remove('display-none');
 
+  chatInput.blur();
+};
+function renderResultWrapper(result) {
+  const gameWrapper = document.querySelector('.game-wrapper');
+  const resultWrapper = document.querySelector('.result-wrapper');
+  const resultText = resultWrapper.querySelector('.result-text');
+
+  gameWrapper.classList.add('display-none');
+  resultWrapper.classList.remove('display-none');
+
+  let resultString = '';
+
+  if (result.guess_success) {
+    resultString = 'Tebrikler, doğru tahmin!';
+  } else {
+    resultString = 'Üzgünüm, yanlış tahmin!';
+  };
+
+  if (result.is_opponent_human) {
+    if (result.opponent_guess_success) {
+      resultString += ' Karşıdaki doğru tahmin!';
+    } else {
+      resultString += ' Karşıdaki yanlış tahmin!';
+    };
+  } else {
+    resultString += ' Karşıdaki bir bot!';
+  };
+
+  resultString += ` Puanınız: ${result.points}`;
+
+  resultText.innerText = resultString;
+};
+
+function createMessageBoxAndAddToChat(className, message) {
+  const messageDiv = document.createElement('div');
+  const chatBox = document.querySelector('.body-wrapper-chat-box');
+
+  messageDiv.classList.add(className);
+  messageDiv.innerText = message;
+
+  chatBox.appendChild(messageDiv);
+
+  chatBox.scrollTop = chatBox.scrollHeight;
+};
 function addChatMessageSelf() {
   const chatInput = document.querySelector('#chat-text-input');
-  const chatBox = document.querySelector('.body-wrapper-chat-box');
 
-  if (chatInput && chatBox && chatInput.value.trim() !== '') {
-    const messageDiv = document.createElement('div');
-    messageDiv.classList.add('chat-message-self'); // Optional: Add a class for styling
-    messageDiv.textContent = chatInput.value;
-    
-    chatBox.appendChild(messageDiv); 
-    chatInput.value = ''; 
+  if (!chatInput.value.trim()) return;
 
-    // Scroll to the latest message
-    chatBox.scrollTop = chatBox.scrollHeight;
-  }
-}
+  createMessageBoxAndAddToChat('chat-message-self', chatInput.value);
 
-function addChatMessageOpponent() {
-  const chatInput = document.querySelector('#chat-text-input');
-  const chatBox = document.querySelector('.body-wrapper-chat-box');
+  socket.emit('message', {
+    room_id: socket.room_id,
+    message: chatInput.value
+  });
 
-  if (chatInput && chatBox && chatInput.value.trim() !== '') {
-    const messageDiv = document.createElement('div');
-    messageDiv.classList.add('chat-message-opponent');
-    messageDiv.textContent = chatInput.value;
-    
-    chatBox.appendChild(messageDiv);
-    chatInput.value = '';
-
-    // Scroll to the latest message
-    chatBox.scrollTop = chatBox.scrollHeight;
-  }
-}
+  chatInput.value = '';
+};
+function addChatMessageOpponent(message) {
+  createMessageBoxAndAddToChat('chat-message-opponent', message);
+};
 
 window.addEventListener('load', () => {
   document.addEventListener('click', (event) => {
-    if (event.target.id === 'start-game-button') {
-      renderGame();
-    }
-  });
-});
+    if (event.target.closest('#start-game-button') && !event.target.closest('#start-game-button').disabled)
+      renderWaitingForGame();
 
-document.addEventListener('DOMContentLoaded', () => {
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Enter' && event.target.id === 'chat-text-input') {
-      console.log(event.target);
+    if (event.target.closest('#chat-send-button'))
       addChatMessageSelf();
-    }
+
+    if (event.target.closest('.decision-wrapper-button')) {
+      const selectedButton = event.target.closest('.decision-wrapper-button');
+
+      const messages = [];
+
+      for (const message of document.querySelectorAll('.chat-message-self, .chat-message-opponent'))
+        messages.push({
+          user: message.classList.contains('chat-message-self') ? 'self' : 'opponent',
+          message: message.innerText
+        });
+
+      serverRequest('/result', 'POST', {
+        room_id: socket.room_id,
+        messages: messages,
+        guess: selectedButton.id.replace('decision-button-', '')
+      }, (err, res) => {
+        if (err)
+          return console.error(err);
+
+        renderResultWrapper(res);
+      });
+    };
   });
-  
-  document.addEventListener('click', (event) => {
-    if (event.target.id === 'chat-send-button') {
-      addChatMessageOpponent();
-    }
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' && event.target.closest('#chat-text-input'))
+      addChatMessageSelf();
   });
 });

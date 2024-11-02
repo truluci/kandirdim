@@ -1,20 +1,22 @@
 extends ../partials/header.pug
 block main
-  div.body-wrapper.pregame-wrapper
-    div.body-wrapper-content
-      button.body-wrapper-content-button#start-game-button oyna
-      div.body-wrapper-content-text konuşmaya başlamak için oyna butonuna basın
-  div.body-wrapper.game-wrapper.display-none
-    div.body-wrapper-chat-box
-    div.body-wrapper-chat-text-input-wrapper
-      div.body-wrapper-chat-text-input-wrapper-timer
+  .body-wrapper.pregame-wrapper
+    button.body-wrapper-content-button#start-game-button
+      .body-wrapper-content-button-text oyna
+      .body-wrapper-content-button-loading.display-none
+        include ../partials/loading.pug
+    .body-wrapper-content-text konuşmaya başlamak için oyna butonuna basın
+  .body-wrapper.game-wrapper.display-none
+    .body-wrapper-chat-box
+    .body-wrapper-chat-text-input-wrapper
+      .body-wrapper-chat-text-input-wrapper-timer= chat_duration_in_seconds
       input.body-wrapper-chat-text-input-wrapper-input#chat-text-input(type='text' placeholder='Type here to chat')
       button.body-wrapper-chat-text-input-wrapper-btn#chat-send-button gönder
-  div.decision-wrapper.body-wrapper.display-none
-    p.decision-question az önce bir insanla mı konuştun robotla mı?
-    div.decision-wrapper-buttons
-      button.decision-wrapper-button#decision-human-button insan
-      button.decision-wrapper-button#decision-robot-button robot
-  div.body-wrapper-result.display-none
+    .decision-wrapper.display-none
+      p.decision-question az önce bir insanla mı konuştun robotla mı?
+      .decision-wrapper-buttons
+        button.decision-wrapper-button#decision-button-human insan
+        button.decision-wrapper-button#decision-button-robot robot
+  .body-wrapper.result-wrapper.display-none
     p.result-text
-    button.result-button#result-continue-button devam et
+    a.result-button#result-continue-button(href='/') yeniden oyna

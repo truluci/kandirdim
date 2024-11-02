@@ -90,32 +90,19 @@ GameSchema.statics.endGameByRoomIdWithMessages = function (room_id, data, callba
   if (!data.messages || !Array.isArray(data.messages))
     return callback('bad_request');
 
-  Game.findOne({ room_id: room_id })
+  for (const message of data.messages)
+    if (!message || typeof message != 'object' || !message.user || typeof message.user != 'string' || message.user.trim().length > MAX_DATABASE_TEXT_FIELD_LENGTH || !message.message || typeof message.message != 'string' || message.message.trim().length > MAX_DATABASE_TEXT_FIELD_LENGTH)
+      return callback('bad_request');
+
+  Game.findOneAndUpdate({ room_id: room_id }, {
+    is_finished: true,
+    messages: data.messages
+  }, {
+    new: true
+  })
     .then(game => {
       if (!game)
         return callback('document_not_found');
-
-      if (game.is_finished)
-        return callback(null);
-
-      for (const message of data.messages) {
-        if (!message || typeof message != 'object' || !message.user || typeof message.user != 'string' || message.user.trim().length > MAX_DATABASE_TEXT_FIELD_LENGTH || !message.message || typeof message.message != 'string' || message.message.trim().length > MAX_DATABASE_TEXT_FIELD_LENGTH)
-          return callback('bad_request');
-
-        if (!game.user_ids.includes(message.user))
-          return callback('bad_request');
-      };
-
-      return Game.findOneAndUpdate({ room_id: room_id }, {
-        is_finished: true,
-        messages: data.messages
-      }, {
-        new: true
-      });
-    })
-    .then(game => {
-      if (!game)
-        return callback('not_found');
 
       return callback(null, game);
     })

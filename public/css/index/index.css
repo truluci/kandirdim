@@ -13,6 +13,11 @@
 }
 
 .body-wrapper-content-button {
+  display: flex;
+  width: 10rem;
+  min-width: 10rem;
+  height: 4rem;
+  min-height: 4rem;
   font-family: "Pixelify Sans", sans-serif;
   background-color: var(--button-bg-color);
   color: var(--button-text-color);
@@ -21,7 +26,12 @@
   border-radius: 15px;
   cursor: pointer;
   font-size: 2.2rem;
-  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.body-wrapper-content-button:disabled {
+  cursor: not-allowed;
 }
 
 .body-wrapper-content-button:hover {
@@ -61,9 +71,14 @@
 }
 
 .body-wrapper-chat-text-input-wrapper-timer {
+  display: flex;
   width: 10%;
   background-color: var(--input-bg-color);
   margin-left: 1rem;
+  font-size: 1.5rem;
+  color: #000;
+  justify-content: center;
+  align-items: center;
 }
 
 .body-wrapper-chat-text-input-wrapper-input {
@@ -115,8 +130,18 @@
 }
 
 .decision-wrapper {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 1rem;
-  margin-top: 1rem;
+  width: var(--body-wrapper-width);
+  min-width: var(--body-wrapper-width);
+  height: var(--body-wrapper-height);
+  min-height: var(--body-wrapper-height);
+  backdrop-filter: blur(10px);
+  border-radius: var(--border-radius-lg);
 }
 
 .decision-question {
@@ -143,4 +168,8 @@
 
 .decision-wrapper-button:hover {
   opacity: 0.8;
+}
+
+.result-button {
+  text-decoration: none;
 }

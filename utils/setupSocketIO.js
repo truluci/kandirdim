@@ -3,10 +3,10 @@ import Redis from 'ioredis';
 import { v4 } from 'uuid';
 import Game from '../models/game/Game.js';
 
-const CHAT_DURATION = 10 * 1000;
+export const CHAT_DURATION_IN_SECONDS = 2;
 const RANDOM_QUEUE_NAME = 'randomQueue';
 
-export default (server) => {
+export default server => {
   const io = new Server(server);
   const redis = new Redis();
 
@@ -54,7 +54,7 @@ export default (server) => {
 
               user_1_socket.leave(room_id);
               user_2_socket.leave(room_id);
-            }, CHAT_DURATION);
+            }, CHAT_DURATION_IN_SECONDS * 1000);
           });
         })
         .catch(console.error);
