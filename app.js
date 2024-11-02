@@ -2,6 +2,9 @@ import express from 'express';
 import mongoose from 'mongoose';
 import indexRouter from './routers/index.js';
 import setupSocketIO from './utils/setupSocketIO.js';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const PORT = process.env.PORT || 8000;
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/kandirdim';
