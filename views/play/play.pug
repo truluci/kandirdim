@@ -1,0 +1,8 @@
+extends ../partials/header.pug
+block main
+  div.body-wrapper
+    div.body-wrapper-chat-box
+    div.body-wrapper-chat-text-input-wrapper
+      div.body-wrapper-chat-text-input-wrapper-timer
+      input.body-wrapper-chat-text-input-wrapper-input(type='text' id='chat-text-input' placeholder='Type here to chat')
+      button.body-wrapper-chat-text-input-wrapper-btn(type='button' id='chat-text-submit' onclick='sendChatMessage()') Send

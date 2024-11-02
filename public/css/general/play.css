@@ -1,0 +1,68 @@
+:root {
+  --wrapper-width: 80vw;
+  --wrapper-height: 80vh;
+  --bg-color: #387478;
+  --input-bg-color: #E2F1E7;
+  --button-bg-color: #629584;
+  --text-color: #fff;
+}
+
+.body-wrapper {
+  margin: 0 auto;
+  width: var(--wrapper-width);
+  height: var(--wrapper-height);
+  background-color: var(--bg-color);
+  border-radius: 30px;
+}
+
+.body-wrapper-chat-box,
+.body-wrapper-chat-text-input-wrapper {
+  width: var(--wrapper-width);
+  margin: 0 auto;
+}
+
+.body-wrapper-chat-box {
+  height: 70vh;
+  border-radius: 15px;
+}
+
+.body-wrapper-chat-text-input-wrapper {
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.body-wrapper-chat-text-input-wrapper-timer,
+.body-wrapper-chat-text-input-wrapper-input,
+.body-wrapper-chat-text-input-wrapper-btn {
+  height: 2.5rem;
+  border-radius: 7.5px;
+  font-family: "Pixelify Sans", sans-serif;
+}
+
+.body-wrapper-chat-text-input-wrapper-timer {
+  width: 10%;
+  background-color: var(--input-bg-color);
+  margin-left: 1rem;
+}
+
+.body-wrapper-chat-text-input-wrapper-input {
+  width: 70%;
+  background-color: var(--input-bg-color);
+  border: none;
+  font-size: 1.5rem;
+}
+
+.body-wrapper-chat-text-input-wrapper-btn {
+  width: 10%;
+  background-color: var(--button-bg-color);
+  color: var(--text-color);
+  border: none;
+  margin-right: 1rem;
+  font-size: 1.5rem;
+}
+
+.body-wrapper-chat-text-input-wrapper-btn:hover {
+  opacity: 0.8;
+}
