@@ -1,6 +1,12 @@
 extends ../partials/header.pug
 block main
-  div.body-wrapper
+  div.body-wrapper.pregame-wrapper
     div.body-wrapper-content
       input.body-wrapper-content-btn(type="button", value="oyna")
       div.body-wrapper-content-text konuşmaya başlamak için oyna butonuna basın
+  div.body-wrapper.game-wrapper.display-none
+    div.body-wrapper-chat-box
+    div.body-wrapper-chat-text-input-wrapper
+      div.body-wrapper-chat-text-input-wrapper-timer
+      input.body-wrapper-chat-text-input-wrapper-input(type='text' id='chat-text-input' placeholder='Type here to chat')
+      button.body-wrapper-chat-text-input-wrapper-btn(type='button' id='chat-text-submit' onclick='sendChatMessage()') Send
