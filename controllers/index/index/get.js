@@ -5,7 +5,7 @@ export default (_req, res) => {
     title: 'kandirdim',
     includes: {
       js: ['socket.io', 'page'],
-      css: ['header', 'index', 'play']
+      css: ['header', 'page', 'general']
     }
   });
 };

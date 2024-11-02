@@ -2,11 +2,19 @@ extends ../partials/header.pug
 block main
   div.body-wrapper.pregame-wrapper
     div.body-wrapper-content
-      input.body-wrapper-content-btn(type="button", value="oyna")
+      button.body-wrapper-content-button#start-game-button oyna
       div.body-wrapper-content-text konuşmaya başlamak için oyna butonuna basın
   div.body-wrapper.game-wrapper.display-none
     div.body-wrapper-chat-box
     div.body-wrapper-chat-text-input-wrapper
       div.body-wrapper-chat-text-input-wrapper-timer
-      input.body-wrapper-chat-text-input-wrapper-input(type='text' id='chat-text-input' placeholder='Type here to chat')
-      button.body-wrapper-chat-text-input-wrapper-btn(type='button' id='chat-text-submit' onclick='sendChatMessage()') Send
+      input.body-wrapper-chat-text-input-wrapper-input#chat-text-input(type='text' placeholder='Type here to chat')
+      button.body-wrapper-chat-text-input-wrapper-btn#chat-send-button gönder
+  div.decision-wrapper.body-wrapper.display-none
+    p.decision-question az önce bir insanla mı konuştun robotla mı?
+    div.decision-wrapper-buttons
+      button.decision-wrapper-button#decision-human-button insan
+      button.decision-wrapper-button#decision-robot-button robot
+  div.body-wrapper-result.display-none
+    p.result-text
+    button.result-button#result-continue-button devam et
