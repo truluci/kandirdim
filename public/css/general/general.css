@@ -6,6 +6,33 @@
   font-family: "Pixelify Sans", sans-serif;
 }
 
+input[type=search]::-ms-clear { display: none; width : 0; height: 0; }
+input[type=search]::-ms-reveal { display: none; width : 0; height: 0; }
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration { display: none; }
+
+textarea, input {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  resize: none;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+  -webkit-appearance: textfield;
+}
+
 :root {
   --primary-bg-color: #387478;
   --secondary-bg-color: #243642;
@@ -13,24 +40,50 @@
   --button-bg-color: #629584;
   --button-text-color: #fff;
   --text-color: #fff;
-  --wrapper-width: 80vw;
+
+  --wrapper-width: 100vw;
   --wrapper-height: 80vh;
-  --navbar-padding: 1.5rem;
-  --button-padding: 0.7rem 1.5rem;
-  --border-radius-lg: 30px;
-  --border-radius-md: 15px;
-  --border-radius-sm: 7.5px;
   --button-min-width: 8rem; /* New min-width for buttons */
   --button-min-height: 2.5rem; /* New min-height for buttons */
-  --div-min-width: 10rem; /* New min-width for divs */
-  --div-min-height: 4rem; /* New min-height for divs */
+  --div-min-width: 400px; /* New min-width for divs */
+  --div-min-height: 4rem; /* New min-height for  */
+
+
+  --page-horizontal-padding: 60px;
+  --page-vertical-padding: 20px;
+  --navbar-padding: 1.5rem;
+  --button-padding: 0.7rem 1.5rem;
+
+  --spacing: 1.5rem;
+
+  --border-radius-lg: 0px;
+  --border-radius-md: 0px;
+  --border-radius-sm: 0px;
+}
+
+html {
+  width: 100vw;
+  height: 100vh;
+  margin: 0px;
+  padding: 0px;
+	background-size: cover;
+	background: var(--secondary-bg-color);
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: var(--page-vertical-padding) var(--page-horizontal-padding);
+  display: flex;
+  flex-direction: column;
+  gap: var(--page-vertical-padding);
 }
 
 .body-wrapper {
   position: relative;
-  margin: 0 auto;
-  width: var(--wrapper-width);
-  height: var(--wrapper-height);
+  width: 100%;
+  height: 100%;
   display: flex;
   color: var(--text-color);
   flex-direction: column;
@@ -39,4 +92,26 @@
   text-align: center;
   background-color: var(--primary-bg-color);
   border-radius: var(--border-radius-lg);
+  min-width: var(--div-min-width);
+}
+
+@media only screen and (min-width: 1920px) {
+  :root {
+    --page-horizontal-padding: calc((100vw - 1920px) / 2 + 60px);
+  }
+}
+@media only screen and (max-width: 800px) {
+  :root {
+    --page-horizontal-padding: 45px;
+  }
+}
+@media only screen and (max-width: 700px) {
+  :root {
+    --page-horizontal-padding: 30px;
+  }
+}
+@media only screen and (max-width: 500px) {
+  :root {
+    --page-horizontal-padding: 20px;
+  }
 }

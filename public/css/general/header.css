@@ -2,8 +2,9 @@
   --navbar-text-color: #fff;
   --navbar-button-color: #387478;
   --navbar-padding: 1.5rem;
-  --navbar-link-spacing: 3rem;
-  --navbar-buttons-border-radius: 30px;
+  --navbar-buttons-border-radius: 0px;
+  --navbar-button-min-width: 5rem; /* Minimum width for navbar buttons */
+  --navbar-button-min-height: 2.5rem; /* Minimum height for navbar buttons */
 }
 
 body {
@@ -13,19 +14,25 @@ body {
 }
   
 .header-wrapper {
-  width: 80vw;
+  width: 100%;
   display: flex;
   align-items: center;
-  padding: var(--navbar-padding) 0;
-  margin: 0 auto;
+  /* margin: 0 auto; */
+  gap: var(--spacing);
 }
 
 .header-wrapper-home {
   color: var(--navbar-text-color);
   border-radius: var(--navbar-buttons-border-radius);
-  padding: 0.7rem 1.5rem;
+  padding: 0.5rem 1rem;
   background-color: var(--navbar-button-color);
   text-decoration: none;
+  width: fit-content;
+  min-width: var(--navbar-button-min-width); /* Applying minimum width */
+  min-height: var(--navbar-button-min-height); /* Applying minimum height */
+  text-align: center;
+  align-content: center;
+  align-self: center;
 }
 
 .header-wrapper-home:hover {
@@ -36,15 +43,22 @@ body {
   display: flex;
   justify-content: flex-end;
   width: 100%;
+  gap: var(--spacing);
 }
   
 .navbar a {
   color: var(--navbar-text-color);
-  margin-left: var(--navbar-link-spacing);
+  /* margin-left: var(--spacing); */
   border-radius: var(--navbar-buttons-border-radius);
-  padding: 0.7rem 1.5rem;
+  padding: 0.5rem 0.5rem;
   background-color: var(--navbar-button-color);
   text-decoration: none;
+  width: fit-content;
+  align-content: center;
+  align-self: center;
+  text-align: center;
+  min-width: var(--navbar-button-min-width); /* Applying minimum width */
+  min-height: var(--navbar-button-min-height); /* Applying minimum height */
 }
 
 .navbar a:hover {
