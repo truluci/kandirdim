@@ -15,9 +15,9 @@
 .body-wrapper-content-button {
   display: flex;
   width: 10rem;
-  min-width: 10rem;
+  min-width: var(--button-min-width);
   height: 4rem;
-  min-height: 4rem;
+  min-height: var(--button-min-height);
   font-family: "Pixelify Sans", sans-serif;
   background-color: var(--button-bg-color);
   color: var(--button-text-color);
@@ -42,21 +42,31 @@
   color: var(--text-color);
   margin-top: 1rem;
   font-size: 2rem;
+  min-width: var(--div-min-width);
+  min-height: var(--div-min-height);
 }
 
 .body-wrapper-chat-box,
 .body-wrapper-chat-text-input-wrapper {
   width: var(--body-wrapper-width);
+  min-width: var(--div-min-width);
   margin: 0 auto;
 }
 
 .body-wrapper-chat-box {
   height: 70vh;
   border-radius: 15px;
+  overflow-y: auto;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-height: var(--div-min-height);
 }
 
 .body-wrapper-chat-text-input-wrapper {
   height: 10vh;
+  min-height: var(--div-min-height);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -66,6 +76,7 @@
 .body-wrapper-chat-text-input-wrapper-input,
 .body-wrapper-chat-text-input-wrapper-btn {
   height: 2.5rem;
+  min-height: var(--button-min-height);
   border-radius: 7.5px;
   font-family: "Pixelify Sans", sans-serif;
 }
@@ -73,6 +84,7 @@
 .body-wrapper-chat-text-input-wrapper-timer {
   display: flex;
   width: 10%;
+  min-width: var(--button-min-width);
   background-color: var(--input-bg-color);
   margin-left: 1rem;
   font-size: 1.5rem;
@@ -83,6 +95,7 @@
 
 .body-wrapper-chat-text-input-wrapper-input {
   width: 70%;
+  min-width: calc(var(--button-min-width) * 3);
   background-color: var(--input-bg-color);
   border: none;
   font-size: 1.5rem;
@@ -90,6 +103,7 @@
 
 .body-wrapper-chat-text-input-wrapper-btn {
   width: 10%;
+  min-width: var(--button-min-width);
   background-color: var(--button-bg-color);
   color: var(--text-color);
   border: none;
@@ -101,22 +115,14 @@
   opacity: 0.8;
 }
 
-.body-wrapper-chat-box {
-  display: flex;
-  flex-direction: column;
-  overflow-y: auto; /* Enable vertical scrolling */
-  gap: 0.5rem;
-  margin-top: 1rem;
-}
-
 .chat-message-self,
 .chat-message-opponent {
-  background-color: #d1e7dd; /* Light green background */
-  color: #0f5132; /* Dark green text */
+  background-color: #d1e7dd;
+  color: #0f5132;
   padding: 0.5rem;
   border-radius: 15px;
-  max-width: 70%; /* Restrict the maximum width to 70% of the container */
-  word-wrap: break-word; /* Ensure long words wrap to a new line */
+  max-width: 70%;
+  word-wrap: break-word;
 }
 
 .chat-message-self {
@@ -141,11 +147,13 @@
   height: var(--body-wrapper-height);
   min-height: var(--body-wrapper-height);
   backdrop-filter: blur(10px);
-  border-radius: var(--border-radius-lg);
+  border-radius: var(--div-min-height);
 }
 
 .decision-question {
   font-size: 2rem;
+  min-width: var(--div-min-width);
+  min-height: var(--div-min-height);
 }
 
 .decision-wrapper-buttons {
@@ -164,12 +172,27 @@
   cursor: pointer;
   font-size: 1.5rem;
   text-align: center;
+  min-width: var(--button-min-width);
+  min-height: var(--button-min-height);
 }
 
 .decision-wrapper-button:hover {
   opacity: 0.8;
 }
 
+.result-text {
+  font-size: 2rem;
+  min-width: var(--div-min-width);
+  min-height: var(--div-min-height);
+}
+
 .result-button {
+  font-size: 1.5rem;
   text-decoration: none;
+  min-width: var(--button-min-width);
+  min-height: var(--button-min-height);
+  background-color: var(--button-bg-color);
+  color: var(--button-text-color);
+  padding: var(--button-padding);
+  border-radius: var(--border-radius-md);
 }

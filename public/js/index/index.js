@@ -71,6 +71,13 @@ function renderDecisionWrapper() {
 
   chatInput.blur();
 };
+function renderWaitingForResult() {
+  const decisionWrapperButtons = document.querySelector('.decision-wrapper-buttons');
+  const decisionWrapperButtonLoading = document.querySelector('.decision-wrapper-buttons-loading');
+
+  decisionWrapperButtons.classList.add('display-none');
+  decisionWrapperButtonLoading.classList.remove('display-none');
+};
 function renderResultWrapper(result) {
   const gameWrapper = document.querySelector('.game-wrapper');
   const resultWrapper = document.querySelector('.result-wrapper');
@@ -149,7 +156,8 @@ window.addEventListener('load', () => {
           user: message.classList.contains('chat-message-self') ? 'self' : 'opponent',
           message: message.innerText
         });
-
+      
+      renderWaitingForResult();
       serverRequest('/result', 'POST', {
         room_id: socket.room_id,
         messages: messages,

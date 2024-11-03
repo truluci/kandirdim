@@ -17,6 +17,8 @@ block main
       .decision-wrapper-buttons
         button.decision-wrapper-button#decision-button-human insan
         button.decision-wrapper-button#decision-button-robot robot
+      .decision-wrapper-buttons-loading.display-none
+        include ../partials/loading.pug
   .body-wrapper.result-wrapper.display-none
     p.result-text
     a.result-button#result-continue-button(href='/') yeniden oyna

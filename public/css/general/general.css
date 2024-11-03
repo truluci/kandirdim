@@ -20,6 +20,10 @@
   --border-radius-lg: 30px;
   --border-radius-md: 15px;
   --border-radius-sm: 7.5px;
+  --button-min-width: 8rem; /* New min-width for buttons */
+  --button-min-height: 2.5rem; /* New min-height for buttons */
+  --div-min-width: 10rem; /* New min-width for divs */
+  --div-min-height: 4rem; /* New min-height for divs */
 }
 
 .body-wrapper {
