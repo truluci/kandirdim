@@ -25,7 +25,7 @@
   border: none;
   border-radius: var(--border-radius-md);
   cursor: pointer;
-  font-size: 2.2rem;
+  font-size: var(--font-size-large);
   align-items: center;
   justify-content: center;
 }
@@ -40,33 +40,27 @@
 
 .body-wrapper-content-text {
   color: var(--text-color);
-  margin-top: 1rem;
-  font-size: 2rem;
-  min-width: var(--div-min-width);
-  min-height: var(--div-min-height);
+  padding: var(--page-vertical-padding) var(--page-horizontal-padding);
+  font-size: var(--font-size-large);
 }
 
 .body-wrapper-chat-box,
 .body-wrapper-chat-text-input-wrapper {
   width: 100%;
-  min-width: var(--div-min-width);
-  padding: 25px;
+  padding: var(--page-vertical-padding) var(--page-horizontal-padding);
   gap: var(--spacing);  
 }
 
 .body-wrapper-chat-box {
   border-radius: var(--border-radius-md);
   overflow-y: auto;
-  margin-top: 1rem;
   display: flex;
   flex-direction: column;
   flex: 1;
   gap: 0.5rem;
-  min-height: var(--div-min-height);
 }
 
 .body-wrapper-chat-text-input-wrapper {
-  min-height: var(--div-min-height);
   display: flex;
   align-items: center;
 }
@@ -74,7 +68,7 @@
 .body-wrapper-chat-text-input-wrapper-timer,
 .body-wrapper-chat-text-input-wrapper-input,
 .body-wrapper-chat-text-input-wrapper-btn {
-  height: 2.5rem;
+  height: var(--button-min-height);
   min-height: var(--button-min-height);
   border-radius: var(--border-radius-sm);
   font-family: "Pixelify Sans", sans-serif;
@@ -85,7 +79,7 @@
   min-width: var(--button-width);
   width: var(--button-width);
   background-color: var(--input-bg-color);
-  font-size: 1.5rem;
+  font-size: var(--font-size-medium);
   color: #000;
   justify-content: center;
   align-items: center;
@@ -93,13 +87,13 @@
 
 .body-wrapper-chat-text-input-wrapper-input {
   display: flex;
-  flex: 1;
   background-color: var(--input-bg-color);
   outline: none;
   border: none;
-  font-size: 1.5rem;
-  min-width: calc(100% - 2 * var(--button-width) - 4 * var(--spacing));
-  width: calc(100% - 2 * var(--button-width) - 4 * var(--spacing));
+  font-size: var(--font-size-medium);
+  min-width: calc(100% - 2 * var(--button-width) - 2 * var(--spacing));
+  width: calc(100% - 2 * var(--button-width) - 2 * var(--spacing));
+  padding: 0 calc(var(--font-size-medium) / 2);
 }
 
 .body-wrapper-chat-text-input-wrapper-btn {
@@ -108,7 +102,7 @@
   background-color: var(--button-bg-color);
   color: var(--text-color);
   border: none;
-  font-size: 1.5rem;
+  font-size: var(--font-size-medium);
 }
 
 .body-wrapper-chat-text-input-wrapper-btn:hover {
@@ -123,17 +117,15 @@
   border-radius: var(--border-radius-md);
   max-width: 70%;
   word-wrap: break-word;
-  font-size: 1.2rem;
+  font-size: var(--font-size-medium);
 }
 
 .chat-message-self {
   align-self: flex-end;
-  margin-right: 1rem;
 }
 
 .chat-message-opponent {
   align-self: flex-start;
-  margin-left: 1rem;
   background-color: #629584;
   color: #0c3b25;
 }
@@ -154,9 +146,7 @@
 }
 
 .decision-question {
-  font-size: 2rem;
-  min-width: var(--div-min-width);
-  min-height: var(--div-min-height);
+  font-size: var(--font-size-large);
 }
 
 .decision-wrapper-buttons {
@@ -172,7 +162,7 @@
   border: none;
   border-radius: var(--border-radius-md);
   cursor: pointer;
-  font-size: 1.5rem;
+  font-size: var(--font-size-medium);
   text-align: center;
   min-width: var(--button-min-width);
   min-height: var(--button-min-height);
@@ -183,13 +173,11 @@
 }
 
 .result-text {
-  font-size: 2rem;
-  min-width: var(--div-min-width);
-  min-height: var(--div-min-height);
+  font-size: var(--font-size-large);
 }
 
 .result-button {
-  font-size: 1.5rem;
+  font-size: var(--font-size-medium);
   text-decoration: none;
   min-width: var(--button-min-width);
   min-height: var(--button-min-height);
@@ -197,4 +185,34 @@
   color: var(--button-text-color);
   padding: var(--button-padding);
   border-radius: var(--border-radius-md);
+}
+
+@media only screen and (max-width: 500px) {
+  .body-wrapper-chat-box{
+    padding-top: var(--button-min-height);
+  }
+  .body-wrapper-chat-text-input-wrapper-input{
+    min-width: calc(100% - 1 * var(--button-width) - 1 * var(--spacing));
+    width: calc(100% - 1 * var(--button-width) - 1 * var(--spacing));
+  }
+  .body-wrapper-chat-text-input-wrapper-timer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: transparent;
+    width: fit-content;
+    min-width: fit-content;
+    color: var(--text-color);
+    padding: var(--page-vertical-padding) var(--page-horizontal-padding);
+  }
+  .body-wrapper-chat-text-input-wrapper {
+    gap: 0px;
+  }
+  #chat-send-button {
+    background-image: url('../../send.svg');
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+  }
 }

@@ -1,0 +1,12 @@
+<svg viewBox="0 -3 24 24" xmlns="http://www.w3.org/2000/svg">
+  <!-- Roof -->
+  <rect x="10" y="2" width="4" height="2" fill="white"/>
+  <rect x="8" y="4" width="8" height="2" fill="white"/>
+  <rect x="6" y="6" width="12" height="2" fill="white"/>
+  
+  <!-- Walls -->
+  <rect x="4" y="8" width="16" height="8" fill="white"/>
+
+  <!-- Door -->
+  <rect x="10" y="12" width="4" height="4" fill="#387478"/>
+</svg>

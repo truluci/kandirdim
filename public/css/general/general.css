@@ -45,9 +45,10 @@ input[type=number] {
   --wrapper-height: 80vh;
   --button-min-width: 8rem; /* New min-width for buttons */
   --button-min-height: 2.5rem; /* New min-height for buttons */
-  --div-min-width: 400px; /* New min-width for divs */
-  --div-min-height: 4rem; /* New min-height for  */
 
+  --font-size-large: 2rem;
+  --font-size-medium: 1.4rem;
+  --font-size-small: 1.2rem;
 
   --page-horizontal-padding: 60px;
   --page-vertical-padding: 20px;
@@ -84,7 +85,7 @@ body {
 .body-wrapper {
   position: relative;
   width: 100%;
-  height: 90vh;
+  height: calc(100dvh - 3 * var(--page-vertical-padding) - var(--navbar-button-height));
   display: flex;
   color: var(--text-color);
   flex-direction: column;
@@ -93,7 +94,7 @@ body {
   text-align: center;
   background-color: var(--primary-bg-color);
   border-radius: var(--border-radius-lg);
-  min-width: var(--div-min-width);
+  min-width: 100%;
 }
 
 @media only screen and (min-width: 1920px) {
@@ -110,51 +111,22 @@ body {
   :root {
     --page-horizontal-padding: 30px;
   }
-  .body-wrapper-chat-text-input-wrapper-input,
-  .body-wrapper-chat-text-input-wrapper-btn,
-  .body-wrapper-chat-text-input-wrapper-timer {
-    font-size: 1rem;
-  }
-
 }
 @media only screen and (max-width: 500px) {
   :root {
     --page-horizontal-padding: 20px;
-  }
-  .body-wrapper-chat-text-input-wrapper {
-    gap: 0px;
-  }
-}
-@media only screen and (max-width: 430px) {
-  :root {
-    --page-horizontal-padding: 0px;
-    --spacing: 0px;
-    --div-min-width: 320px;
     --button-width: 2.5rem;
-  }
-  .body-wrapper-chat-text-input-wrapper-timer {
-    font-size: 0.8rem;
-  }
-  #chat-send-button {
-    background-image: url('../../message.png');
-    background-size: 20px 20px;
-    background-repeat: no-repeat;
-    background-position: center;
-    color: transparent;
+
+    --font-size-large: 1.8rem;
+    --font-size-medium: 1.2rem;
+    --font-size-small: 1rem;
+    
+    --spacing: 0px;
   }
 }
-@media only screen and (max-width: 325px) {
-  li.navbar a,
-  .header-wrapper a {
-    font-size: 0.8rem;
-  }
-  .chat-message-opponent,
-  .chat-message-self {
-    font-size: 1rem;
-  }
-}
-@media only screen and (max-width: 320px) {
-  li.navbar a {
-    border-left: 1px solid var(--navbar-text-color);
+@media only screen and (max-width: 440px) {
+  :root {
+    --page-horizontal-padding: 12px;
+    --page-vertical-padding: 12px;
   }
 }
