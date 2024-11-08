@@ -64,7 +64,7 @@ input[type=number] {
 html {
   width: 100vw;
   height: 100vh;
-  margin: 0px;
+  margin: 0 auto;
   padding: 0px;
 	background-size: cover;
 	background: var(--secondary-bg-color);
@@ -105,13 +105,55 @@ body {
     --page-horizontal-padding: 45px;
   }
 }
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 600px) {
   :root {
     --page-horizontal-padding: 30px;
   }
+  .body-wrapper-chat-text-input-wrapper-input,
+  .body-wrapper-chat-text-input-wrapper-btn,
+  .body-wrapper-chat-text-input-wrapper-timer {
+    font-size: 1rem;
+  }
+
 }
 @media only screen and (max-width: 500px) {
   :root {
     --page-horizontal-padding: 20px;
+  }
+  .body-wrapper-chat-text-input-wrapper {
+    gap: 0px;
+  }
+}
+@media only screen and (max-width: 430px) {
+  :root {
+    --page-horizontal-padding: 0px;
+    --spacing: 0px;
+    --div-min-width: 320px;
+    --button-width: 2.5rem;
+  }
+  .body-wrapper-chat-text-input-wrapper-timer {
+    font-size: 0.8rem;
+  }
+  #chat-send-button {
+    background-image: url('../../message.png');
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+  }
+}
+@media only screen and (max-width: 325px) {
+  li.navbar a,
+  .header-wrapper a {
+    font-size: 0.8rem;
+  }
+  .chat-message-opponent,
+  .chat-message-self {
+    font-size: 1rem;
+  }
+}
+@media only screen and (max-width: 320px) {
+  li.navbar a {
+    border-left: 1px solid var(--navbar-text-color);
   }
 }

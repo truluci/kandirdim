@@ -7,3 +7,4 @@ export const secondsToMMSS = seconds => {
 
   return `${paddedMinutes}:${paddedSeconds}`;
 };
+

@@ -19,6 +19,7 @@ body {
   align-items: center;
   /* margin: 0 auto; */
   gap: var(--spacing);
+  min-width: var(--div-min-width);
 }
 
 .header-wrapper-home {
