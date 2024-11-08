@@ -3,7 +3,7 @@ import Redis from 'ioredis';
 import { v4 } from 'uuid';
 import Game from '../models/game/Game.js';
 
-export const CHAT_DURATION_IN_SECONDS = 600;
+export const CHAT_DURATION_IN_SECONDS = 60;
 const RANDOM_QUEUE_NAME = 'randomQueue';
 
 export default server => {

@@ -29,9 +29,9 @@ body {
   padding: 0.5rem 0.5rem;
   background-color: var(--navbar-button-color);
   text-decoration: none;
-  width: var(--navbar-button-height);
+  width: fit-content;
   height: var(--navbar-button-height);
-  min-width: var(--navbar-button-width); /* Applying minimum width */
+  min-width: fit-content; /* Applying minimum width */
   min-height: var(--navbar-button-height); /* Applying minimum height */
   text-align: center;
   align-content: center;

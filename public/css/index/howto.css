@@ -3,3 +3,7 @@
     font-size: calc(var(--font-size-medium) - 0.1rem);
     text-align: left;
 }
+
+.body-wrapper-content-text strong{
+    color: var(--text-color-highlight);
+}

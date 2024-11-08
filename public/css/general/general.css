@@ -40,11 +40,12 @@ input[type=number] {
   --button-bg-color: #629584;
   --button-text-color: #fff;
   --text-color: #fff;
+  --text-color-highlight: #222020;
 
   --wrapper-width: 100vw;
   --wrapper-height: 80vh;
-  --button-min-width: 8rem; /* New min-width for buttons */
-  --button-min-height: 2.5rem; /* New min-height for buttons */
+  --button-min-width: 8rem;
+  --button-min-height: 2.5rem;
 
   --font-size-large: 2rem;
   --font-size-medium: 1.4rem;
@@ -70,6 +71,7 @@ html {
   padding: 0px;
 	background-size: cover;
 	background: var(--secondary-bg-color);
+  overflow: hidden;
 }
 
 body {
@@ -112,7 +114,7 @@ body {
     --page-horizontal-padding: 30px;
   }
 }
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 505px) {
   :root {
     --page-horizontal-padding: 20px;
     --button-width: 2.5rem;
@@ -120,7 +122,7 @@ body {
     --font-size-large: 1.8rem;
     --font-size-medium: 1.2rem;
     --font-size-small: 1rem;
-    
+
     --spacing: 0px;
   }
 }

@@ -1,12 +1,12 @@
 extends ../partials/header.pug
 block main
-  //- .body-wrapper.pregame-wrapper
+  .body-wrapper.pregame-wrapper
     button.body-wrapper-content-button#start-game-button
       .body-wrapper-content-button-text oyna
       .body-wrapper-content-button-loading.display-none
         include ../partials/loading.pug
     .body-wrapper-content-text konuşmaya başlamak için oyna butonuna basın
-  .body-wrapper.game-wrapper //.display-none
+  .body-wrapper.game-wrapper.display-none
     .body-wrapper-chat-box
     .body-wrapper-chat-text-input-wrapper
       .body-wrapper-chat-text-input-wrapper-timer= chat_duration_in_seconds
