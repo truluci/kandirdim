@@ -55,6 +55,7 @@ input[type=number] {
   --button-padding: 0.7rem 1.5rem;
 
   --spacing: 1.5rem;
+  --button-spacing: 1.5rem;
 
   --border-radius-lg: 0px;
   --border-radius-md: 0px;

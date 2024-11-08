@@ -161,7 +161,7 @@
 
 .decision-wrapper-buttons {
   display: flex;
-  gap: var(--spacing);
+  gap: var(--button-spacing);
 }
 
 .decision-wrapper-button {
