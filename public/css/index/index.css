@@ -50,7 +50,7 @@
 .body-wrapper-chat-text-input-wrapper {
   width: 100%;
   min-width: var(--div-min-width);
-  padding: var(--spacing);
+  padding: 25px;
   gap: var(--spacing);  
 }
 
